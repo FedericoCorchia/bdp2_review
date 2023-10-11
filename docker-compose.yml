@@ -2,25 +2,25 @@ version: '3'
 services:
   my_jupyter:
     image: federicocorchia/extended-notebook
-    networks:
-      - bdp2-net
     user: root
     environment:
-      - JUPYTER_ENABLE_LAB=yes
-      - JUPYTER_TOKEN="bdp2_password"
-      - CHOWN_HOME=yes
+      - JUPYTER_ENABLE_LAB="yes"
+      - JUPYTER_TOKEN=bdp2_password
+      - CHOWN_HOME="yes"
       - CHOWN_HOME_OPTS="-R"
     ports:
       - 80:8888
+    networks:
+      - bdp2-net
     volumes:
       - ~/review/bdp2_review/work:/home/jovyan
   my_redis:
     image: redis
-    networks:
-      - bdp2-net
-    user: "1000"
     depends_on:
       - my_jupyter
+    user: "1000"
+    networks:
+      - bdp2-net
     volumes:
       - ~/review:/data
   portainer:
@@ -28,7 +28,10 @@ services:
     ports:
       - 8000:8000
       - 443:9443
+    networks:
+      - bdp2-net
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./portainer_data:/data
-
+networks:
+  bdp2-net:

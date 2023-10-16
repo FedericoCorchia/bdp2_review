@@ -16,13 +16,12 @@ services:
       - ~/review/bdp2_review/work:/home/jovyan
   my_redis:
     image: redis
-    depends_on:
-      - my_jupyter
+    command: redis-server
     user: "1000"
     networks:
       - bdp2-net
     volumes:
-      - ~/review:/data
+      - ~/review/bdp2_review/work:/data
   portainer:
     image: portainer/portainer-ce
     ports:

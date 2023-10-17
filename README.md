@@ -10,7 +10,7 @@ This exercise tests the following:
 The aim of this exercise is to extend image ```minimal-notebook``` (DockerHub: ```jupyter/minimal-notebook```) so that it already comes with Redis installed. This is done through the Dockerfile at ```docker/Dockerfile```.
 
 ## 2. Automatic Build of the Extended Image and Publication on DockerHub
-The aim of this exercise is to have the Jupyter extended image automatically built and published on DockerHub at every ```git push``` command. This is done by the GitHub action at ```.github/workflows/docker-image.yml```. The image gets published on DockerHub at https://hub.docker.com/repository/docker/federicocorchia/extended-notebook.
+The aim of this exercise is to have the Jupyter extended image automatically built and published on DockerHub at every commit issued to GitHub. This is done by the GitHub action at ```.github/workflows/docker-image.yml```. The image gets published on DockerHub at https://hub.docker.com/repository/docker/federicocorchia/extended-notebook.
 
 The extended image published on DockerHub can then be launched with:
 
